@@ -1,7 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const LocationDetails = ({ city, country }) => {
-  return <div>LocationDetails</div>;
-};
+function LocationDetails(props) {
+  const { city, country } = props;
+  return (
+    <h1 className="location">
+      {city} {country}
+    </h1>
+  );
+}
 
 export default LocationDetails;
