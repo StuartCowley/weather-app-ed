@@ -1,46 +1,65 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import LocationDetails from "./LocationDetails";
 import ForecastSummaries from "./ForecastSummaries";
 import ForecastDetails from "./ForecastDetails";
+import SearchForm from "./SearchForm";
+import getForecast from "../requests/getForecast";
 import "../styles/App.css";
 
 function App() {
   const [forecasts, setForecasts] = useState([]);
-  const [location, setLocation] = useState({ city: "", country: "" });
+  const [location, setLocation] = useState({
+    city: "",
+    country: "",
+  });
   const [selectedDate, setSelectedDate] = useState(0);
+  const [searchText, setSearchText] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const selectedForecast = forecasts.find(
     (forecast) => forecast.date === selectedDate
   );
 
-  const getForecast = () => {
-    const endpoint = "https://mcr-codes-weather-app.herokuapp.com/forecast";
+  const handleForecastSelect = (date) => {
+    setSelectedDate(date);
+  };
 
-    axios.get(endpoint).then((response) => {
-      setSelectedDate(response.data.forecasts[0].date);
-      setForecasts(response.data.forecasts);
-      setLocation(response.data.location);
-    });
+  const handleCitySearch = () => {
+    getForecast(
+      setSelectedDate,
+      setForecasts,
+      setLocation,
+      searchText,
+      setErrorMessage
+    );
   };
 
   useEffect(() => {
-    getForecast();
+    getForecast(setSelectedDate, setForecasts, setLocation);
   }, []);
-
-  function handleForecastSelect(date) {
-    setSelectedDate(date);
-  }
 
   return (
     <div className="weather-app">
       <h1>Weather App</h1>
-      <LocationDetails city={location.city} country={location.country} />
-      <ForecastSummaries
-        forecasts={forecasts}
-        // eslint-disable-next-line react/jsx-no-bind
-        onForecastSelect={handleForecastSelect}
-      />{" "}
-      {selectedForecast && <ForecastDetails forecast={selectedForecast} />}
+      <LocationDetails
+        city={location.city}
+        country={location.country}
+        errorMessage={errorMessage}
+      />
+      <SearchForm
+        searchText={searchText}
+        setSearchText={setSearchText}
+        onSubmit={handleCitySearch}
+      />
+      {!errorMessage && (
+        <>
+          <ForecastSummaries
+            forecasts={forecasts}
+            onForecastSelect={handleForecastSelect}
+          />
+          {selectedForecast && <ForecastDetails forecast={selectedForecast} />}
+        </>
+      )}
     </div>
   );
 }
