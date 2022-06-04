@@ -1,0 +1,17 @@
+.forecast-summary {
+  padding: 10px 16px;
+  border-bottom: 1px solid #fafafa;
+  text-align: center;
+}
+
+.forecast-summary:hover {
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-summary__date {
+  font-weight: bold;
+}
+
+.forecast-summary__icon {
+  font-size: 2rem;
+}
