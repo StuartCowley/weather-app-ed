@@ -1,15 +1,31 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import LocationDetails from "./LocationDetails";
 import ForecastSummaries from "./ForecastSummaries";
 import ForecastDetails from "./ForecastDetails";
 import "../styles/App.css";
 
-function App({ forecasts, location }) {
-  const [selectedDate, setSelectedDate] = useState(forecasts[0].date);
+function App() {
+  const [forecasts, setForecasts] = useState([]);
+  const [location, setLocation] = useState({ city: "", country: "" });
+  const [selectedDate, setSelectedDate] = useState(0);
   const selectedForecast = forecasts.find(
     (forecast) => forecast.date === selectedDate
   );
+
+  const getForecast = () => {
+    const endpoint = "https://mcr-codes-weather-app.herokuapp.com/forecast";
+
+    axios.get(endpoint).then((response) => {
+      setSelectedDate(response.data.forecasts[0].date);
+      setForecasts(response.data.forecasts);
+      setLocation(response.data.location);
+    });
+  };
+
+  useEffect(() => {
+    getForecast();
+  }, []);
 
   function handleForecastSelect(date) {
     setSelectedDate(date);
@@ -24,32 +40,9 @@ function App({ forecasts, location }) {
         // eslint-disable-next-line react/jsx-no-bind
         onForecastSelect={handleForecastSelect}
       />{" "}
-      <ForecastDetails forecast={selectedForecast} />
+      {selectedForecast && <ForecastDetails forecast={selectedForecast} />}
     </div>
   );
 }
-
-App.propTypes = {
-  forecasts: PropTypes.arrayOf(
-    PropTypes.shape({
-      date: PropTypes.number,
-      description: PropTypes.string,
-      icon: PropTypes.string,
-      temperature: PropTypes.shape({
-        max: PropTypes.number,
-        min: PropTypes.number,
-      }),
-      wind: PropTypes.shape({
-        speed: PropTypes.number,
-        direction: PropTypes.string,
-      }).isRequired,
-      humidity: PropTypes.number.isRequired,
-    })
-  ).isRequired,
-  location: PropTypes.shape({
-    city: PropTypes.string,
-    country: PropTypes.string,
-  }).isRequired,
-};
 
 export default App;
