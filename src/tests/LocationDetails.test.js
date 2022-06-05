@@ -7,6 +7,6 @@ describe("LocationDetails", () => {
     const { getByText } = render(
       <LocationDetails city="Manchester" country="UK" />
     );
-    expect(getByText("Manchester UK")).toBeInstanceOf(HTMLHeadingElement);
+    expect(getByText("Manchester, UK")).toBeInstanceOf(HTMLHeadingElement);
   });
 });
