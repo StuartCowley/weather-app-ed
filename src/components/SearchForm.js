@@ -7,6 +7,13 @@ import "../styles/SearchForm.css";
 function SearchForm({ searchText, setSearchText, onSubmit }) {
   const handleInputChange = (event) => setSearchText(event.target.value);
 
+  function handleKeyUp(event) {
+    // Enter
+    if (event.keyCode === 13) {
+      onSubmit();
+    }
+  }
+
   return (
     <div className="search-form">
       <input
@@ -14,8 +21,9 @@ function SearchForm({ searchText, setSearchText, onSubmit }) {
         type="text"
         onChange={handleInputChange}
         value={searchText}
+        onKeyUp={handleKeyUp}
       />
-      <button id="searchQuerySubmit" type="submit" onClick={onSubmit} on>
+      <button id="searchQuerySubmit" type="submit" onClick={onSubmit}>
         <svg viewBox="0 0 24 24">
           <path
             fill="#666666"
