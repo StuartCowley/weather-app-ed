@@ -1,12 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import moment from "moment";
 import WeatherIcon from "react-icons-weather";
 import "../styles/ForecastSummary.css";
 
 function ForecastSummary(props) {
   const { date, temperature, description, icon, onSelect } = props;
-  const formattedDate = new Date(date).toDateString();
+  const formattedDate = moment(date).format("MMMM Do");
+  new Date(date).toDateString();
   let weather = "";
+
   if (temperature.max < 12) {
     weather = "cold";
   } else if (temperature.max >= 12 && temperature.max < 19) {
