@@ -40,7 +40,6 @@ function App() {
 
   return (
     <div className="weather-app">
-      <h1>Five Day Weather Forecast</h1>
       <LocationDetails
         city={location.city}
         country={location.country}
