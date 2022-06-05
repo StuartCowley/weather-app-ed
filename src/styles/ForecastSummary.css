@@ -9,7 +9,7 @@
 .forecast-summary__icon {
   font-size: 3rem;
   font-weight: bold;
-  margin: 1.5rem;
+  margin-top: 2rem;
 }
 
 .forecast-summary__date {
@@ -28,7 +28,7 @@
 }
 
 .forecast-summary.cold {
-  border-bottom: 6px solid #238ee6;
+  border-bottom: 6px solid #319cf3;
 }
 
 .forecast-summary.mild {
