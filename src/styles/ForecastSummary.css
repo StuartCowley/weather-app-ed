@@ -1,17 +1,78 @@
 .forecast-summary {
   padding: 10px 16px;
-  border-bottom: 1px solid #fafafa;
   text-align: center;
+  border: 1px solid rgb(210, 210, 210);
+  margin-top: 1rem;
+  background-color: rgb(247, 253, 255);
+}
+
+.forecast-summary__icon {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 1.5rem;
+}
+
+.forecast-summary__date {
+  margin: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.forecast-summary__temperature {
+  margin: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.forecast-summary__description {
+  margin: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.forecast-summary.cold {
+  border-bottom: 6px solid #238ee6;
+}
+
+.forecast-summary.mild {
+  border-bottom: 6px solid #dab444;
+}
+
+.forecast-summary.warm {
+  border-bottom: 6px solid #e5751a;
 }
 
 .forecast-summary:hover {
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
+.forecast-summary.cold:hover {
+  border-top: 6px solid #238ee6;
+  border-bottom: none;
+  padding: 10px 50px;
+}
+
+.forecast-summary.mild:hover {
+  border-top: 6px solid #dab444;
+  border-bottom: none;
+  padding: 10px 50px;
+}
+
+.forecast-summary.warm:hover {
+  border-top: 6px solid #e5751a;
+  border-bottom: none;
+}
+
 .forecast-summary__date {
   font-weight: bold;
 }
 
-.forecast-summary__icon {
-  font-size: 2rem;
+button {
+  border-radius: 5px;
+  background-color: #bebebe; /* Green */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
 }

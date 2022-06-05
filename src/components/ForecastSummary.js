@@ -6,8 +6,20 @@ import "../styles/ForecastSummary.css";
 function ForecastSummary(props) {
   const { date, temperature, description, icon, onSelect } = props;
   const formattedDate = new Date(date).toDateString();
+  let weather = "";
+  if (temperature.max < 12) {
+    weather = "cold";
+  } else if (temperature.max >= 12 && temperature.max < 19) {
+    weather = "mild";
+  } else {
+    weather = "warm";
+  }
+
   return (
-    <div className="forecast-summary" data-testid="forecast-summary">
+    <div
+      className={`forecast-summary ${weather}`}
+      data-testid="forecast-summary"
+    >
       <div className="forecast-summary__date">{formattedDate}</div>
       <div className="forecast-summary__icon" data-testid="forecast-icon">
         <WeatherIcon name="owm" iconId={icon} />

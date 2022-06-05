@@ -1,0 +1,10 @@
+.forecast-details {
+  padding: 10px 16px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.forecast-details__date {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
