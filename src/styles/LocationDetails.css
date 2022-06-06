@@ -1,14 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Open+Sans:wght@300&family=Poppins:wght@200&display=swap");
 
-.forecast-details {
-  padding: 10px 16px;
-  text-align: center;
-  margin-top: 1rem;
-  font-size: 1.2rem;
+h1 {
   font-family: "Poppins", sans-serif;
-}
-
-.forecast-details__date {
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 3rem;
 }

@@ -8,7 +8,7 @@ function SearchForm({ searchText, setSearchText, onSubmit }) {
   const handleInputChange = (event) => setSearchText(event.target.value);
 
   function handleKeyUp(event) {
-    // Enter key
+    // Enter
     if (event.keyCode === 13) {
       onSubmit();
     }
