@@ -1,6 +1,6 @@
 # 5 Day Weather Forecast
 
-A simple little weather app written using React that displays a 5 day forecast based on a specific city, searched for by the user.
+A simple weather app written using React that displays a 5 day forecast based on a specific city, searched for by the user.
 
 This app covers a number of basic concepts in React such as Components, Styles, Props, Hooks, Conditional Rendering, Tests and more.
 
