@@ -6,7 +6,7 @@ import "../styles/ForecastSummary.css";
 
 function ForecastSummary(props) {
   const { date, temperature, description, icon, onSelect } = props;
-  const formattedDate = moment(date).format("MMMM Do");
+  const formattedDate = moment(date).format("dddd Do");
   new Date(date).toDateString();
   let weather = "";
 
