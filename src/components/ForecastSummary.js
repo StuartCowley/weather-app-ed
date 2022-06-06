@@ -10,9 +10,9 @@ function ForecastSummary(props) {
   new Date(date).toDateString();
   let weather = "";
 
-  if (temperature.max < 12) {
+  if (temperature.max < 13) {
     weather = "cold";
-  } else if (temperature.max >= 12 && temperature.max < 19) {
+  } else if (temperature.max >= 13 && temperature.max < 19) {
     weather = "mild";
   } else {
     weather = "warm";
